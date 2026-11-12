@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "console": "ps5",
+  "title_id": "PPSA01949",
+  "game": "Control Ultimate Edition",
+  "version": "01.000.004",
+  "name": "Render resolution 1280x720",
+  "description": "The renderer's default settings ask for a 2560x1440 scene in a 3840x2160 output. This lowers the scene to 1280x720; the output size stays. Much lighter on the GPU.",
+  "author": "batatinhafcbatatinha-pixel",
+  "tested": "AnyPS5 fork (local build, 2026-11-11) and KytyPS5 fork 87de64e0: ~17 fps -> ~30 fps in the first gameplay scene on an RTX 3050 laptop GPU.",
+  "writes": [
+    {
+      "module": "renderer_ps5_f.prx",
+      "find_u32": [3840, 2160, 2560, 1440],
+      "write_u32": [3840, 2160, 1280, 720]
+    }
+  ]
+}
