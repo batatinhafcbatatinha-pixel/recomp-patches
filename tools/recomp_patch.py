@@ -10,6 +10,7 @@
 only copy of a dump: the files are changed in place.
 """
 import json
+import os
 import shutil
 import struct
 import sys
@@ -29,6 +30,20 @@ def module_files(folder, module):
     return [p for p in Path(folder).rglob('*') if p.name.lower() in names and p.is_file()]
 
 
+def own_copy(path):
+    """Refuses a file that is reached through a link or junction: the write would land in the game dump."""
+    plain, real = os.path.normcase(os.path.abspath(path)), os.path.normcase(os.path.realpath(path))
+    if plain != real:
+        raise ValueError(f'{path} is reached through a link to {real}: copy the module into the port first')
+
+
+def replace_file(path, data):
+    """Writes a new file and swaps it in. A hard link shared with the game dump is broken, never written through."""
+    fresh = Path(str(path) + '.new')
+    fresh.write_bytes(data)
+    os.replace(fresh, path)
+
+
 def apply(patch, folder, log=print):
     """Applies every write of the patch; raises ValueError (nothing changed) when one does not fit."""
     plan = []
@@ -44,18 +59,21 @@ def apply(patch, folder, log=print):
             raise ValueError(f'{write["module"]}: the pattern occurs {data.count(find)} times (another game version?)')
         plan.append((files[0], data.find(find) + at, new))
     for path, offset, new in plan:
+        own_copy(path)
         original = Path(str(path) + '.orig')
         if not original.is_file():
             shutil.copy2(path, original)
         data = bytearray(path.read_bytes())
         data[offset:offset + len(new)] = new
-        path.write_bytes(data)
+        replace_file(path, bytes(data))
         log(f'{patch["name"]}: {path.name} +0x{offset:x}, {len(new)} bytes')
 
 
 def revert(folder, log=print):
     for original in Path(folder).rglob('*.orig'):
-        shutil.copy2(original, str(original)[:-5])
+        target = Path(str(original)[:-5])
+        own_copy(target)
+        replace_file(target, original.read_bytes())
         original.unlink()
         log(f'restored {original.name[:-5]}')
 
