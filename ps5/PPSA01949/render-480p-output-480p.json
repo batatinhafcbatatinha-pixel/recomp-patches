@@ -1,0 +1,28 @@
+{
+  "format": 1,
+  "console": "ps5",
+  "title_id": "PPSA01949",
+  "game": "Control Ultimate Edition",
+  "version": "01.000.004",
+  "name": "Render resolution 854x480, output 854x480",
+  "description": "Output and render resolution 854x480, the lightest variant. The game's defaults are an output of 3840x2160 and a render resolution of 2560x1440; this patch sets both, so the scene, the upscale, the UI and the final composition all run at the lower size. Use only one of the three variants.",
+  "author": "batatinhafcbatatinha-pixel",
+  "tested": "Not tested. Same four values as the tested 720p variant, with 854x480 written instead. 854 is not a multiple of 8; if the picture is wrong, try 848x480.",
+  "writes": [
+    {
+      "module": "renderer_ps5_f.prx",
+      "find_u32": [
+        3840,
+        2160,
+        2560,
+        1440
+      ],
+      "write_u32": [
+        854,
+        480,
+        854,
+        480
+      ]
+    }
+  ]
+}

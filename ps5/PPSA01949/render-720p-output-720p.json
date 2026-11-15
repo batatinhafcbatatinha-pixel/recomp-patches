@@ -5,14 +5,24 @@
   "game": "Control Ultimate Edition",
   "version": "01.000.004",
   "name": "Render resolution 1280x720, output 1280x720",
-  "description": "Like render-720p.json, and the output buffers shrink from 3840x2160 to 1280x720 as well, so the upscale, UI and final composition passes run at 720p. The picture is softer than with the 1080p output; the HUD layout is unchanged. The lightest of the three variants for the GPU. Use only one of the three.",
+  "description": "Output and render resolution 1280x720. The game's defaults are an output of 3840x2160 and a render resolution of 2560x1440; this patch sets both, so the scene, the upscale, the UI and the final composition all run at the lower size. Use only one of the three variants. The picture is softer than at 1080p; the HUD layout is unchanged.",
   "author": "batatinhafcbatatinha-pixel",
-  "tested": "KytyPS5 fork ff3de3fd with a measuring probe (local build, 2026-11-14), first gameplay scene, RTX 3050 laptop GPU, Ryzen 5 3600: right picture, no device loss, 59.6 fps (six 10 s windows, 59.0-59.9) against 51.3 fps with render-720p.json in the run before it with the same build; the display's 60 Hz limit applies. One scene, one run per variant. Not run in AnyPS5.",
+  "tested": "KytyPS5 fork ff3de3fd with a measuring probe (local build, 2026-11-14), first gameplay scene, RTX 3050 laptop GPU, Ryzen 5 3600: right picture, no device loss, 59.6 fps (six 10 s windows, 59.0-59.9) against 51.3 fps with render 1280x720 and the output left at 3840x2160, in the run before it with the same build; the display's 60 Hz limit applies. One scene, one run. Not run in AnyPS5.",
   "writes": [
     {
       "module": "renderer_ps5_f.prx",
-      "find_u32": [3840, 2160, 2560, 1440],
-      "write_u32": [1280, 720, 1280, 720]
+      "find_u32": [
+        3840,
+        2160,
+        2560,
+        1440
+      ],
+      "write_u32": [
+        1280,
+        720,
+        1280,
+        720
+      ]
     }
   ]
 }
