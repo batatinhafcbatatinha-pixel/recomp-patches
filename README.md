@@ -17,6 +17,7 @@ Nothing in this repository is game code or game data. A patch holds where to wri
 | PS2 | The Sopranos: Road to Respect (SLUS-21388) | 60 fps (menus 60; 3D scenes stay near 30 for now) | `ps2/SLUS-21388_sopranos-road-to-respect.pnach` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Render resolution 1280x720 | `ps5/PPSA01949/render-720p.json` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Render resolution 1280x720, output 1920x1080 (frees about 0.8 GB of GPU memory; use instead of the one above) | `ps5/PPSA01949/render-720p-output-1080p.json` |
+| PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Render resolution 1280x720, output 1280x720 (lightest for the GPU, softer picture; use instead of the ones above) | `ps5/PPSA01949/render-720p-output-720p.json` |
 
 ## Using it
 
