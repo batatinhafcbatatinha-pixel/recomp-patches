@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "console": "ps5",
+  "title_id": "PPSA04264",
+  "game": "Grand Theft Auto V",
+  "version": "01.011.001",
+  "name": "Render resolution 1920x1080, output 1920x1080",
+  "description": "Output and render resolution 1920x1080. Choose Performance in the game's graphics settings first: this patch replaces the sizes the game computes for that mode. The first two writes are the display mode (the game's default output is 3840x2160), the last two the render size of the Performance mode. Both are held: the game writes them again later and the patch follows. Only for the KytyPS5 fork (`recomp_patch.py kyty`, then `--game-patch`). Use only one variant.",
+  "author": "batatinhafcbatatinha-pixel",
+  "tested": "KytyPS5 fork (2026-11-17): the game takes the values (display mode and render size 1920x1080 confirmed in the log). Frame rate still being measured. Not yet run with the mode chosen in the menu instead of the local default-mode change.",
+  "writes": [
+    {
+      "module": "eboot.bin",
+      "offset": "0x15ebe2b0",
+      "find_u32": [
+        3840
+      ],
+      "write_u32": [
+        1920
+      ],
+      "hold": true
+    },
+    {
+      "module": "eboot.bin",
+      "offset": "0x15ebe2b4",
+      "find_u32": [
+        2160
+      ],
+      "write_u32": [
+        1080
+      ],
+      "hold": true
+    },
+    {
+      "module": "eboot.bin",
+      "offset": "0x155630c8",
+      "find_u32": [
+        854
+      ],
+      "write_u32": [
+        1920
+      ],
+      "hold": true
+    },
+    {
+      "module": "eboot.bin",
+      "offset": "0x155630cc",
+      "find_u32": [
+        480
+      ],
+      "write_u32": [
+        1080
+      ],
+      "hold": true
+    }
+  ]
+}

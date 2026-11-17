@@ -48,6 +48,9 @@ def apply(patch, folder, log=print):
     """Applies every write of the patch; raises ValueError (nothing changed) when one does not fit."""
     plan = []
     for write in patch['writes']:
+        if 'offset' in write:
+            raise ValueError(f'{patch["name"]}: has memory writes (values the game computes at run time); '
+                             'only the KytyPS5 path applies them (recomp_patch.py kyty)')
         find, new = pattern(write, 'find'), pattern(write, 'write')
         at = int(write.get('at', 0))
         files = module_files(folder, write['module'])
@@ -85,6 +88,12 @@ def kyty(patch):
         find, new = pattern(write, 'find'), pattern(write, 'write')
         at = int(write.get('at', 0))
         on = find[:at] + new + find[at + len(new):]
+        if 'offset' in write:  # memory write: a fixed place in the loaded main module
+            entry = {'offset': hex(int(write['offset'], 16)), 'off': find.hex(), 'on': on.hex()}
+            if write.get('hold'):
+                entry['hold'] = True
+            memory.append(entry)
+            continue
         memory.append({'offset': hex(0x20000000 + index * 0x1000), 'off': find.hex(), 'on': on.hex()})
     return {'name': patch['game'], 'id': patch['title_id'], 'version': patch['version'], 'process': 'eboot.bin',
             'mods': [{'name': patch['name'], 'enabled': True, 'memory': memory}]}

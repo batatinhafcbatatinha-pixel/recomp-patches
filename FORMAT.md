@@ -22,3 +22,17 @@ A write:
 
 A tool applies a write to the module file (keeping a `.orig` copy) or to the loaded module in memory; the result is
 the same bytes.
+
+A **memory write** is for a value the game computes into its own data after it starts (a render size, for instance),
+so there is nothing to find in the file. It has `offset` instead of a pattern:
+
+| Field | Meaning |
+| --- | --- |
+| `module` | `eboot.bin` (the main module; offsets are counted from its load address, as in GoldHEN/Kyty cheat files) |
+| `offset` | hex text, where the value lives |
+| `find_u32` or `find` | the value the game writes there (only these bytes are replaced) |
+| `write_u32` or `write` | our value |
+| `hold` | `true`: the value is written again whenever the game writes its own value there |
+
+Only the KytyPS5 path (`recomp_patch.py kyty`, KytyPS5 `--game-patch`) applies memory writes; `apply` refuses a patch
+that has them.

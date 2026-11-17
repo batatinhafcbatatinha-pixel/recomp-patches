@@ -18,6 +18,8 @@ Nothing in this repository is game code or game data. A patch holds where to wri
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 854x480 (not tested) | `ps5/PPSA01949/render-480p-output-480p.json` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1280x720 (tested: 59.6 fps in the KytyPS5 fork on an RTX 3050 laptop GPU) | `ps5/PPSA01949/render-720p-output-720p.json` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1920x1080 (not tested with these values) | `ps5/PPSA01949/render-1080p-output-1080p.json` |
+| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1280x720, Performance mode (tested: 60 fps in the KytyPS5 fork on an RTX 3050 laptop GPU; KytyPS5 only) | `ps5/PPSA04264/render-720p-output-720p.json` |
+| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1920x1080, Performance mode (frame rate not measured yet; KytyPS5 only) | `ps5/PPSA04264/render-1080p-output-1080p.json` |
 
 ## Using it
 
