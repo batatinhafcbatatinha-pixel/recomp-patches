@@ -5,9 +5,9 @@
   "game": "Grand Theft Auto V",
   "version": "01.011.001",
   "name": "Render resolution 1280x720, output 1280x720",
-  "description": "Output and render resolution 1280x720. Choose Performance in the game's graphics settings first: this patch replaces the sizes the game computes for that mode. The first two writes are the display mode (the game's default output is 3840x2160), the last two the render size of the Performance mode. Both are held: the game writes them again later and the patch follows. Only for the KytyPS5 fork (`recomp_patch.py kyty`, then `--game-patch`). Use only one variant.",
+  "description": "Output and render resolution 1280x720. Choose Performance in the game's graphics settings first. The first two writes are the display mode (the game's default output is 3840x2160); they are held: the game writes them again later and the patch follows. The game computes the render size from the display size and a table of scales of its upscaler quality modes (0.769, 0.667, 0.588, 0.5; Performance uses 0.667, so 854x480 at a 720p output). The last write sets that table to 1.0, so the game itself computes a 1280x720 render size (holding the render size instead, as the first version did, is a race: other game threads read it while it changes). Use only one variant.",
   "author": "batatinhafcbatatinha-pixel",
-  "tested": "KytyPS5 fork (2026-11-17, commits up to 2066efea), bank scene of the prologue, RTX 3050 laptop GPU (8 GB), Ryzen 5 3600: 59.8 fps in two 400 s runs (the display's 60 Hz limit), right picture. Those runs also had a local change that makes Performance the default graphics mode for a new profile; with the mode chosen in the menu instead it has not been run yet.",
+  "tested": "AnyPS5 (2026-11-18, new GPU engine, `tools/ps5port` with the file in the port's patches folder), RTX 3050 laptop GPU (8 GB), Ryzen 5 3600: display and render size 1280x720 (read in game memory), right picture, 59.6 fps in the bank scene of the prologue (the display's 60 Hz limit). KytyPS5 fork (2026-11-17, commits up to 2066efea, first version with the render size held): 59.8 fps in two 400 s runs; not yet run with the scale-table write.",
   "writes": [
     {
       "module": "eboot.bin",
@@ -33,25 +33,18 @@
     },
     {
       "module": "eboot.bin",
-      "offset": "0x155630c8",
       "find_u32": [
-        854
+        1061481551,
+        1059760811,
+        1058444950,
+        1056964608
       ],
       "write_u32": [
-        1280
-      ],
-      "hold": true
-    },
-    {
-      "module": "eboot.bin",
-      "offset": "0x155630cc",
-      "find_u32": [
-        480
-      ],
-      "write_u32": [
-        720
-      ],
-      "hold": true
+        1065353216,
+        1065353216,
+        1065353216,
+        1065353216
+      ]
     }
   ]
 }
