@@ -18,8 +18,8 @@ Nothing in this repository is game code or game data. A patch holds where to wri
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 854x480 (not tested) | `ps5/PPSA01949/render-480p-output-480p.json` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1280x720 (tested: 59.6 fps in the KytyPS5 fork on an RTX 3050 laptop GPU) | `ps5/PPSA01949/render-720p-output-720p.json` |
 | PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1920x1080 (not tested with these values) | `ps5/PPSA01949/render-1080p-output-1080p.json` |
-| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1280x720, Performance mode (tested: 60 fps in the KytyPS5 fork on an RTX 3050 laptop GPU; KytyPS5 only) | `ps5/PPSA04264/render-720p-output-720p.json` |
-| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1920x1080, Performance mode (frame rate not measured yet; KytyPS5 only) | `ps5/PPSA04264/render-1080p-output-1080p.json` |
+| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1280x720, Performance mode (tested: 60 fps in the KytyPS5 fork on an RTX 3050 laptop GPU; 40.7 fps in AnyPS5) | `ps5/PPSA04264/render-720p-output-720p.json` |
+| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1920x1080, Performance mode (tested: about 47 fps in AnyPS5 on an RTX 3050 laptop GPU) | `ps5/PPSA04264/render-1080p-output-1080p.json` |
 
 ## Using it
 
@@ -28,6 +28,9 @@ Nothing in this repository is game code or game data. A patch holds where to wri
 (PS5 games). PS2 entries are applied by **Apply** (`tools/ps2port hotpatch`). PS5 entries are listed; applying them
 from the launcher needs a launcher and AnyPS5 `tools/ps5port` with support for this repository's JSON format, which
 is not released yet. Until then use the tool below.
+
+**AnyPS5 `tools/ps5port`** (memory writes included): put the JSON file in the port's `patches` folder
+(`.local/ports/<TITLE ID>/patches/`); it is applied at every PLAY and removing the file undoes it.
 
 **By hand, AnyPS5 port** (the converted modules in `build/out/app0`; a rebuild of the port undoes it):
 

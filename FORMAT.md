@@ -34,5 +34,6 @@ so there is nothing to find in the file. It has `offset` instead of a pattern:
 | `write_u32` or `write` | our value |
 | `hold` | `true`: the value is written again whenever the game writes its own value there |
 
-Only the KytyPS5 path (`recomp_patch.py kyty`, KytyPS5 `--game-patch`) applies memory writes; `apply` refuses a patch
+The KytyPS5 path (`recomp_patch.py kyty`, KytyPS5 `--game-patch`) and AnyPS5's `tools/ps5port` (the port's `patches`
+folder) apply memory writes; `apply` refuses a patch
 that has them.
