@@ -14,12 +14,12 @@ Nothing in this repository is game code or game data. A patch holds where to wri
 
 | Console | Game | Patch | File |
 | --- | --- | --- | --- |
-| PS2 | The Sopranos: Road to Respect (SLUS-21388) | 60 fps (menus 60; 3D scenes stay near 30 for now) | `ps2/SLUS-21388_sopranos-road-to-respect.pnach` |
-| PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 854x480 (not tested) | `ps5/PPSA01949/render-480p-output-480p.json` |
-| PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1280x720 (tested: 59.6 fps in the KytyPS5 fork on an RTX 3050 laptop GPU) | `ps5/PPSA01949/render-720p-output-720p.json` |
-| PS5 | Control Ultimate Edition (PPSA01949, 01.000.004) | Output and render 1920x1080 (not tested with these values) | `ps5/PPSA01949/render-1080p-output-1080p.json` |
-| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1280x720, Performance mode (tested: 60 fps in the KytyPS5 fork and in AnyPS5 on an RTX 3050 laptop GPU) | `ps5/PPSA04264/render-720p-output-720p.json` |
-| PS5 | Grand Theft Auto V (PPSA04264, 01.011.001) | Output and render 1920x1080, Performance mode (tested: 60 fps in AnyPS5 on an RTX 3050 laptop GPU) | `ps5/PPSA04264/render-1080p-output-1080p.json` |
+| PS2 | The Sopranos: Road to Respect | 60 fps | `ps2/SLUS-21388_sopranos-road-to-respect.pnach` |
+| PS5 | Control Ultimate Edition | Output and render 854x480 | `ps5/PPSA01949/render-480p-output-480p.json` |
+| PS5 | Control Ultimate Edition | Output and render 1280x720 | `ps5/PPSA01949/render-720p-output-720p.json` |
+| PS5 | Control Ultimate Edition | Output and render 1920x1080 | `ps5/PPSA01949/render-1080p-output-1080p.json` |
+| PS5 | Grand Theft Auto V | Output and render 1280x720, Performance mode | `ps5/PPSA04264/render-720p-output-720p.json` |
+| PS5 | Grand Theft Auto V | Output and render 1920x1080, Performance mode | `ps5/PPSA04264/render-1080p-output-1080p.json` |
 
 ## Using it
 
